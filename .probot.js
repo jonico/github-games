@@ -12,6 +12,15 @@ on('issue_comment.created')
   .filter(event => event.payload.comment.body.match(singleEmoji))
   .deleteComment();
 
+// ASG Spez edition
+const asgSpez = /ASG/g;
+on('issue_comment.created')
+  .filter(event => event.payload.comment.body.match(singleEmoji))
+  .comment(`ASG Spez rocks :metal:
+  ![giphy 2](https://cloud.githubusercontent.com/assets/395397/14451851/3abad496-003f-11e6-9a35-1ba112d981d7.gif)
+`);
+
+
 function isDeleted(event) {
   return event.payload.action === 'deleted' &&
   event.payload.sender.login !== 'probot-demo[bot]';
