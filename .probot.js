@@ -6,12 +6,6 @@ on("issues.opened").comment(`
   [config]: https://github.com/bkeepers/PRobot/blob/master/docs/configuration.md
 `);
 
-// Delete :+1: comments
-const singleEmoji = /^\W*(:[\w-\+]+:|[\uE000-\uF8FF]|\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDDFF])\W*$/g;
-on('issue_comment.created')
-  .filter(event => event.payload.comment.body.match(singleEmoji))
-  .deleteComment();
-
 // ASG Spez edition
 const asgSpez = /ASG/g;
 on('issue_comment.created')
