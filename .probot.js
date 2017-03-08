@@ -35,11 +35,3 @@ Hi @{{ sender.login }}. Please don't delete comments.
 Deleted comment from {{ comment.user.login }} at {{ comment.updated_at }} was
 {{ comment.body }}
 `);
-
-const memberBerry = /[Mm]ember.*\?/g;
-on('issue_comment.created')
-  .filter(event => event.payload.comment.body.match(memberBerry) && event.payload.sender.login !== 'probot-demo[bot]')
-  .comment(`> {{ comment.body }}
-
-![image](https://cloud.githubusercontent.com/assets/1872314/21261671/370ad384-c38d-11e6-8c0e-f08443ebf87d.png)
-`);
